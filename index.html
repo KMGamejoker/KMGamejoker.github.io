@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<html>
+
+<head>
+	<title>Quote Of The Day</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="shortcut icon" href="https://webserver.yourimuldergamedev.nl/katjpg.jpg">
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header" class="alt">
+			<a href="#" class="logo main"><strong>Quote Of The Day</strong> <span></span></a>
+		</header>
+
+		<!-- Banner -->
+		<section id="banner" class="major">
+			<div class="inner">
+				<div class="middeltextcontainer">
+					<header class="major">
+						<h1>Quote Of The Day</h1>
+					</header>
+				</div>
+				<div class="middeltextcontainer">
+
+					<header class="major">
+						<h4 id="Over"></h4>
+						<h4 id="Quote"></h4>
+						<script>
+							fetch('https://webserver.yourimuldergamedev.nl/QuoteOfTheDay.php')
+								.then(response => {
+									if (!response.ok) {
+										throw new Error("Netwerkrespons was niet ok");
+									}
+									return response.json();
+								})
+								.then(data => {
+									const quoteElement = document.getElementById("Quote");
+									const overElement = document.getElementById("Over");
+
+									if (quoteElement && overElement) {
+										quoteElement.textContent = data.Quote || "Geen quote beschikbaar";
+										overElement.textContent = "Nieuwe quote over " + data.Wait || "Geen wachtinformatie beschikbaar";
+									} else {
+										console.error("Elementen met ID 'Quote' of 'Over' ontbreken in de HTML.");
+									}
+								})
+								.catch(error => {
+									console.error('Fout bij het ophalen van de data:', error);
+									document.getElementById("Quote").textContent = "Fout bij het ophalen van de quote.";
+									document.getElementById("Over").textContent = "Fout bij het ophalen van de wachtinformatie.";
+								});
+						</script>
+					</header>
+				</div>
+
+		</section>
+
+
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
