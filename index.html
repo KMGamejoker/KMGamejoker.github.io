@@ -33,7 +33,7 @@
 			<div class="inner">
 				<div class="middeltextcontainer">
 					<header class="major">
-						<h1>Quote Of The Day</h1>
+						<h1>OOF!?</h1>
 					</header>
 				</div>
 				<div class="middeltextcontainer">
@@ -43,34 +43,7 @@
 						<div class="middeltextcontainer">
 							<h4 id="Over"></h4>
 						</div>
-						<script>
-							fetch('https://webserver.yourimuldergamedev.nl/QuoteOfTheDay.php')
-								.then(response => {
-									if (!response.ok) {
-										throw new Error("Netwerkrespons was niet ok");
-									}
-									return response.json();
-								})
-								.then(data => {
-									const quoteElement = document.getElementById("Quote");
-									const overElement = document.getElementById("Over");
-									if (quoteElement && overElement) {
-										quoteElement.textContent = data.Quote || "Geen quote beschikbaar";
-										overElement.textContent = "Nieuwe quote over " + data.Wait || "Geen wachtinformatie beschikbaar";
-									} else {
-										console.error("Elementen met ID 'Quote' of 'Over' ontbreken in de HTML.");
-									}
-								})
-								.catch(error => {
-									console.error('Fout bij het ophalen van de data:', error);
-									document.getElementById("Quote").textContent = "Fout bij het ophalen van de quote.";
-									document.getElementById("Over").textContent = "Fout bij het ophalen van de wachtinformatie.";
-								});
-						</script>
 					</header>
-				</div>
-				<div class="middeltextcontainer">
-					<a href="UurlijkeQuote.html" class="button nextt">Uur Quote</a>
 				</div>
 		</section>
 
