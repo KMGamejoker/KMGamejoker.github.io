@@ -3428,7 +3428,7 @@ html, body {
 		-webkit-align-items: center;
 		-ms-align-items: center;
 		align-items: center;
-		background-image: url("https://webserver.yourimuldergamedev.nl/quotebackground.png");
+		background-image: var(--banner-background);
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -3597,23 +3597,6 @@ html, body {
 					height: auto;
 					min-height: 0;
 					max-height: none;
-				}
-
-		}
-
-		@media screen and (max-width: 480px) {
-
-			#banner {
-				padding: 6em 0 2em 0 ;
-				background-image: url("https://webserver.yourimuldergamedev.nl/jobbo.jpg");
-			}
-
-				#banner > .inner .content p br {
-					display: none;
-				}
-
-				#banner.major {
-					padding: 8em 0 4em 0 ;
 				}
 
 		}

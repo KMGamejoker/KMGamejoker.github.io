@@ -57,6 +57,7 @@
 									if (quoteElement && overElement) {
 										quoteElement.textContent = data.Quote || "Geen quote beschikbaar";
 										overElement.textContent = "Nieuwe quote over " + data.Wait || "Geen wachtinformatie beschikbaar";
+    								    document.documentElement.style.setProperty('--banner-background', `url(${data.FotoLink})`);
 									} else {
 										console.error("Elementen met ID 'Quote' of 'Over' ontbreken in de HTML.");
 									}
