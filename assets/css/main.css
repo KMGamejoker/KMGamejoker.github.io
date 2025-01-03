@@ -3600,23 +3600,6 @@ html, body {
 
 		}
 
-		@media screen and (max-width: 480px) {
-
-			#banner {
-				padding: 6em 0 2em 0 ;
-				background-image: url("https://webserver.yourimuldergamedev.nl/jobbo.jpg");
-			}
-
-				#banner > .inner .content p br {
-					display: none;
-				}
-
-				#banner.major {
-					padding: 8em 0 4em 0 ;
-				}
-
-		}
-
 /* Main */
 
 	#main {
