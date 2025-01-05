@@ -45,29 +45,34 @@
 						</div>
 						<p id="message">Controleer of je toegang hebt...</p>
 						<script>
-							fetch('https://webserver.yourimuldergamedev.nl/QuoteOfTheDay.php')
-								.then(response => {
-									if (!response.ok) {
-										throw new Error("Netwerkrespons was niet ok");
-									}
-									return response.json();
+							fetch('https://webserver.yourimuldergamedev.nl/QuoteOfTheDay.php', {
+									method: 'GET',
+									credentials: 'include',
 								})
-								.then(data => {
-									const quoteElement = document.getElementById("Quote");
-									const overElement = document.getElementById("Over");
-									if (quoteElement && overElement) {
-										quoteElement.textContent = data.Quote || "Geen quote beschikbaar";
-										overElement.textContent = "Nieuwe quote over " + data.Wait || "Geen wachtinformatie beschikbaar";
-    								    document.documentElement.style.setProperty('--banner-background', `url(${data.FotoLink})`);
-									} else {
-										console.error("Elementen met ID 'Quote' of 'Over' ontbreken in de HTML.");
-									}
-								})
-								.catch(error => {
-									console.error('Fout bij het ophalen van de data:', error);
-									document.getElementById("Quote").textContent = "Fout bij het ophalen van de quote.";
-									document.getElementById("Over").textContent = "Fout bij het ophalen van de wachtinformatie.";
-								});
+									.then(response => {
+										if (!response.ok) {
+											throw new Error("Netwerkrespons was niet ok");
+										}
+										return response.json();
+									})
+									.then(data => {
+										const quoteElement = document.getElementById("Quote");
+										const overElement = document.getElementById("Over");
+										const Message = document.getElementById("message");
+										if (quoteElement && overElement) {
+											quoteElement.textContent = data.Quote || "Geen quote beschikbaar";
+											overElement.textContent = "Nieuwe quote over " + data.Wait || "Geen wachtinformatie beschikbaar";
+											Message.textContent = data.message;
+											document.documentElement.style.setProperty('--banner-background', `url(${data.FotoLink})`);
+										} else {
+											console.error("Elementen met ID 'Quote' of 'Over' ontbreken in de HTML.");
+										}
+									})
+									.catch(error => {
+										console.error('Fout bij het ophalen van de data:', error);
+										document.getElementById("Quote").textContent = "Fout bij het ophalen van de quote.";
+										document.getElementById("Over").textContent = "Fout bij het ophalen van de wachtinformatie.";
+									});
 						</script>
 					</header>
 				</div>
